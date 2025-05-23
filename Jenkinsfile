@@ -71,7 +71,7 @@ pipeline {
                         sleep(7)
                     }
 
-                    switch(changeGraph.verificationStatus) {
+                    switch(changeGraph.verificationStatus.toString()) {
 					case "ERROR":
                             currentBuild.result = 'FAILURE'
                             error("Граф изменений содержит нарушения целостности")
@@ -84,8 +84,7 @@ pipeline {
                     }
 
                     sh "${MAVEN_HOME}/bin/mvn letunov:contract-scanner-maven-plugin:1.0-SNAPSHOT:updateMicroserviceGraph -DM2_REPO=${M2_REPO} -DmicroserviceIntegrityServerURL=${CHANGE_GRAPH_URL} -e -\"Dorg.slf4j.simpleLogger.defaultLogLevel\"=DEBUG"
-					echo "Сука"
-}
+				}
                 echo "Выполняется деплой"
             }
         }
