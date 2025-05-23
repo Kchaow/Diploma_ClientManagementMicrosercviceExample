@@ -79,10 +79,13 @@ pipeline {
                         case "WARNING":
                             echo "Граф изменений содержит замечания"
                             break
+                        case "OK":
+                        	echo "Граф изменений не имеет проблем"
                     }
 
                     sh "${MAVEN_HOME}/bin/mvn letunov:contract-scanner-maven-plugin:1.0-SNAPSHOT:updateMicroserviceGraph -DM2_REPO=${M2_REPO} -DmicroserviceIntegrityServerURL=${CHANGE_GRAPH_URL} -e -\"Dorg.slf4j.simpleLogger.defaultLogLevel\"=DEBUG"
-                }
+					echo "Сука"
+}
                 echo "Выполняется деплой"
             }
         }
