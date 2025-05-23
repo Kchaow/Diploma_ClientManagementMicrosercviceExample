@@ -81,7 +81,7 @@ pipeline {
                             break
                     }
 
-                    sh "${MAVEN_HOME}/bin/mvn letunov:contract-scanner-maven-plugin:1.0-SNAPSHOT:updateMicroserviceGraph -DM2_REPO=${M2_REPO} -DmicroserviceIntegrityServerURL=${CHANGE_GRAPH_URL} -e -\"Dorg.slf4j.simpleLogger.defaultLogLevel\"=DEBUG"
+                    sh "${MAVEN_HOME}/bin/mvn letunov:contract-scanner-maven-plugin:1.0-SNAPSHOT:updateMicroserviceGraph -DM2_REPO=${M2_REPO} -DmicroserviceIntegrityServerURL=${CHANGE_GRAPH_URL} -e -Dorg.slf4j.simpleLogger.defaultLogLevel=DEBUG"
                 }
                 echo "Выполняется деплой"
             }
